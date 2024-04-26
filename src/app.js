@@ -8,7 +8,7 @@ const webRouter = require('./routes/web')
 const connection = require('./config/database')
 const { env } = require('process')
 // import { Express } from "express-serve-static-core"
-
+const initApi = require('./routes/api')
 const app = express() // app express
 const port = process.env.PORT // port => hardcode
 const hostname = process.env.HOST_NAME; // cau hinh env cho 
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true })) // for form data
 configViewEngine(app)
 
 //init api route
-app.use('/api/v1/',apiRouter)
+app.use('/',initApi)
 
 // khai bao route
 app.use('/',webRouter);
@@ -40,3 +40,7 @@ app.use('/',webRouter);
 app.listen(port, hostname,() => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+
+

@@ -22,6 +22,10 @@ const getFledxy = (req, res) =>{
     res.render('sample.ejs')
 }
 
+const getCreatePage = (req, res) =>{
+    res.render('createuserpage.ejs')
+}
+
 const portCreateUsers = async (req,res) => {
     let name = req.body.fname;
     let city = req.body.lname;
@@ -45,12 +49,13 @@ const portCreateUsers = async (req,res) => {
 );
     console.log('check resualt >>>>>>.', results)
 
-    res.send('ok')
+    res.send('Create user success')
 
 }
 
 module.exports = {
     getHomepage,
     getFledxy,
-    portCreateUsers
+    portCreateUsers,
+    getCreatePage
 }
