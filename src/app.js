@@ -8,7 +8,10 @@ const webRouter = require('./routes/web')
 const connection = require('./config/database')
 const { env } = require('process')
 // import { Express } from "express-serve-static-core"
+const dotenv = require('dotenv')
 const initApi = require('./routes/api')
+const authorRoute = require('./routes/author')
+dotenv.config()
 const app = express() // app express
 const port = process.env.PORT // port => hardcode
 const hostname = process.env.HOST_NAME; // cau hinh env cho 
@@ -27,7 +30,7 @@ app.use('/',initApi)
 app.use('/',webRouter);
 
 // test connection
-
+app.use('/v1/author/', authorRoute)
 // connection.query(
 //   'SELECT * FROM Users u',
 //   function (err, results, fields) {
